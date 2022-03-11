@@ -1,4 +1,4 @@
-# R setting
+# setting
 ## window
 ### 설치해야할 프로그램
   - [R](https://www.r-project.org/)
@@ -6,6 +6,10 @@
   - [git](https://git-scm.com/)
   - [Zotero](https://www.zotero.org/)
   - [miniconda](https://docs.conda.io/en/latest/miniconda.html)
+
+### Rtools설치
+- window에서 R사용시 rtools4가 필요
+- [Rtools](https://cran.rstudio.com/bin/windows/Rtools/)
 
 ### miniconda 설치
 - [슬기로운통계생활 - 유투브](https://www.youtube.com/watch?v=DFN__fmPvmI&t=937s)

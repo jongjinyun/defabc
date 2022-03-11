@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Rrepo</title>
-  <meta name="description" content="Page not found | Rrepo" />
+  <title>repo 4 data preprocessing | Rrepo</title>
+  <meta name="description" content="repo 4 data preprocessing | Rrepo" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Rrepo" />
+  <meta property="og:title" content="repo 4 data preprocessing | Rrepo" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Rrepo" />
+  <meta name="twitter:title" content="repo 4 data preprocessing | Rrepo" />
   
   
   
@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
+<link rel="prev" href="r-tips.html"/>
 
 <script src="libs/header-attrs-2.13/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -125,18 +125,58 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="data-preprocessing" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">repo 4</span> data preprocessing<a href="data-preprocessing.html#data-preprocessing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="dbi-rsqlite" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> DBI &amp; RSQLite<a href="data-preprocessing.html#dbi-rsqlite" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>RAM보다 큰 대용량데이터를 다루기 위해 DBI와 RSQLite 패키지를 사용한다. RSQLite는 R에서 SQLite DB를 사용할 수 있도록 하며, SQLite는 데이터베이스 전체를 파일 하나에 저장하기 때문에 백업과 이동이 간편하다. 참고한 웹페이지는 다음과 같다.
+- <a href="https://unfinishedgod.netlify.app/2020/07/24/r%EC%97%90%EC%84%9C-db-%EC%82%AC%EC%9A%A9sqlite/">R에서 DB사용(Sqlite)</a></p>
+<p>단, 전체 DB를 가지고 데이터 전처리를 진행하지 않는걸 추천한다. 일부 sample을 가지고 데이터 전처리를 수행한 후, 한 파일로 합치는 용도로 쓴다. 이때, DB에 대한 데이터 집계처리는 필요한 테이블을 추출하는 용도로만 사용한다. 예를 들어, case_when 등 function은 dbplyr로 처리가 되지 않는다.</p>
+<div id="db생성" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> DB생성<a href="data-preprocessing.html#db생성" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>DB의 생성은 다음과 같이 진행한다.
+<ul>
+<li><strong>dbConnect()</strong>함수를 활용해 연결한다. SQLite()는 드라이버의 이름을 의미한다.</li>
+</ul>
+<pre><code>dbConnect(SQLite(), dbname = &#39;dbname&#39;)</code></pre>
+<ul>
+<li><strong>dbSendQuery</strong>를 사용하여 DB의 틀을 작성한다.</li>
+</ul>
+<pre><code>dbSendQuery(con,
+          &quot;CREATE TABLE E_db (
+            year TEXT,
+            sido TEXT,
+            gender TEXT,
+            start_yr TEXT,
+            start_mn TEXT)&quot;)</code></pre>
+<ul>
+<li><strong>dbListTables(con)</strong>로 테이블리스트를 확인한다.</li>
+<li><strong>dbGetQuery(con, “SELECT * FROM E_db”)</strong></li>
+</ul></li>
+<li>DB에 데이터를 다음과 같이 저장한다.
+<ul>
+<li><strong>dbWriteTable(con, name = “E_db”, value = db_3, row.names = F, append = T)</strong>
+<ul>
+<li>value는 저장할 데이터를 의미한다.</li>
+<li>append=T일 경우 데이터를 아래로 붙인다.</li>
+<li><strong>dbDisconnect(con)</strong>시 자동으로 저장된다.</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="dbplyr" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> dbplyr<a href="data-preprocessing.html#dbplyr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
+<a href="r-tips.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
@@ -168,7 +208,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jongjinyun/defabc/edit/master/%s",
+"link": "https://github.com/jongjinyun/defabc/edit/master/04-data-preprocessing.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -176,7 +216,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/jongjinyun/defabc/blob/master/%s",
+"link": "https://github.com/jongjinyun/defabc/blob/master/04-data-preprocessing.Rmd",
 "text": null
 },
 "download": null,

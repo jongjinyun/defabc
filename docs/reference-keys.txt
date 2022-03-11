@@ -1,7 +1,8 @@
 defabc
-r-setting
+setting
 window
 설치해야할-프로그램
+rtools설치
 miniconda-설치
 miniconda-가상환경-생성
 r에서-python-사용하기
@@ -13,3 +14,7 @@ r-tips
 affinity-designer-for-svglite
 code-수정
 발생문제
+data-preprocessing
+dbi-rsqlite
+db생성
+dbplyr
