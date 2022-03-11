@@ -7,8 +7,10 @@ site: bookdown::bookdown_site
 
 
 # defabc
+- R을 사용하며 발생한 여러 문제에 대한 해결방법과 주요 팁에 대해 작성하였다. 자료는 웹상의 여러 자료를 종합한 것이며, 출처에 대해서는 최대한 표기하였다. 작성된 내용 중 오류가 있을 수 있다.
+
 - bookdowm render
-    - chapter별 이름의 공란은 '-'로 표시시
+    - chapter별 이름의 공란은 '-'로 표시
 ```
 install.packages("bookdown")
 bookdown::render_book("index.Rmd")
@@ -43,7 +45,6 @@ rm(lib)
     - fig.align = 'center' - 그림 위치, R로 그린 그림에만 해당한다.
 ```{r chunk setup}
 knitr::opts_chunk$set(warning = F,
-                      error = T,
                       message = F)
 ```
 

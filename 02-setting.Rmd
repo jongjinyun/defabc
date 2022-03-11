@@ -177,7 +177,8 @@ rscodeio::install_theme()
 - **font_paths()**: 폰트가 설치된 경로
 - **font_files()**: 윈도우에 설치된 폰트의 path, file, family, face, version, ps_name에 대한 파일 데이터
 - **font_add**: 폰트 설치(family 내 bold, italic, bolditalic, symbol 설정 가능)
-```
+
+```{r font 추가}
 font_add(family = "Arial",
          regular = "C:/Windows/Fonts/arial.ttf",
          bold = "C:/Windows/Fonts/arialbd.ttf",
@@ -191,10 +192,16 @@ font_add(family = "KoPubDotumM",
 font_add(family = "KoPubDotumB",
          regular = "C:/Windows/Fonts/KoPubWorld Dotum_Pro Bold.otf")
 ```
+
 - **showtext_auto()**:  turn on/off the automatic use of showtext functionality
 - **font_families()**: 설치된 폰트확인
 
-```{r showtext example, message=FALSE, warning=FALSE}
+```{r font 적용}
+font_families()
+showtext.auto()
+```
+
+```{r font example}
 ggplot(NULL, aes(x = 1, y = 1)) + 
 ylim(0.8, 1.3) + 
 annotate("text", 1, 1.2, family = 'Arial', size = 15, fontface = 'italic',
@@ -231,7 +238,7 @@ snippet libset
 ```
 
 - 코드창에서는 snippet이 잘 되지만 markdown에서는 잘 안됨
-    - Tools-Modify Keyboard Shortcuts...-snippet 검색 - inser snippet에 대한 shortcut을 'shift+Space'로 설정
+    - Tools-Modify Keyboard Shortcuts...-snippet 검색 - insert snippet에 대한 shortcut을 'shift+Space'로 설정
 
 ### 사용하기 좋은 package
 - *datapasta*
