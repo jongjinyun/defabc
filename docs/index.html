@@ -74,7 +74,7 @@
 <li><a href="./">defabc</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Updates<span></span></a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> defabc<span></span></a></li>
 <li class="chapter" data-level="2" data-path="r-setting.html"><a href="r-setting.html"><i class="fa fa-check"></i><b>2</b> R setting<span></span></a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="r-setting.html"><a href="r-setting.html#window"><i class="fa fa-check"></i><b>2.1</b> window<span></span></a>
@@ -121,11 +121,16 @@
 <p class="author"><em>defabc</em></p>
 <p class="date"><em>2022-03-11</em></p>
 </div>
-<div id="updates" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">repo 1</span> Updates<a href="index.html#updates" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="defabc" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">repo 1</span> defabc<a href="index.html#defabc" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <ul>
-<li>Affinity Designer for SVGLITE (2021-08-25)</li>
-<li>R setting(2022-03-11)</li>
+<li>bookdowm render
+<ul>
+<li>chapter별 이름의 공란은 ’-’로 표시시</li>
+</ul>
+<pre><code>install.packages(&quot;bookdown&quot;)
+bookdown::render_book(&quot;index.Rmd&quot;)
+browseURL(&quot;docs/index.html&quot;)</code></pre></li>
 </ul>
 
 </div>

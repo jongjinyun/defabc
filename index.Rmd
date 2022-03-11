@@ -5,7 +5,12 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
 
-# Updates
-- Affinity Designer for SVGLITE (2021-08-25)
-- R setting(2022-03-11)
 
+# defabc
+- bookdowm render
+    - chapter별 이름의 공란은 '-'로 표시시
+```
+install.packages("bookdown")
+bookdown::render_book("index.Rmd")
+browseURL("docs/index.html")
+```
