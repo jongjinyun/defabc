@@ -3,6 +3,8 @@ setting
 window
 설치해야할-프로그램
 rtools설치
+window-영어-설정
+locale-encoding의-이해
 miniconda-설치
 miniconda-가상환경-생성
 r에서-python-사용하기

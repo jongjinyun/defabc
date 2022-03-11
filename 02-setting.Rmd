@@ -11,7 +11,7 @@
 - window에서 R사용시 rtools4가 필요
 - [Rtools](https://cran.rstudio.com/bin/windows/Rtools/)
 
-## window 영어 설정
+### window 영어 설정
 - [슬기로운통계생활 - 유투브](https://www.youtube.com/watch?v=7UZL0j3QpUo&t=1s)
 - 설정-언어
 - windows display language: English
@@ -30,16 +30,19 @@
         - locale 인자에 지정할 locale name은 운영체제에 따라 서로 다름
         - Sys.setlocale() 함수 안에 아무런 인자를 넣지 않으면 운영체제의 default로 설정
     - localeToCharset(): 현재 설정된 한글 인코딩 방식을 확인
+- 예시시
+    - 문자열 깨질 때 로케일 설정 - 윈도우 
 ```
-# 문자열 깨질 때 로케일 설정 - 윈도우 
 Sys.getlocale() 
 localeToCharset() 
-
-# 미국 로케일로 로케일을 변환하기 
+```
+    - 미국 로케일로 로케일을 변환하기 
+```
 Sys.setlocale(category = 'LC_ALL',locale = 'english') 
 localeToCharset() 
-
-# 우리나라로 로케일 변경하기 
+```
+    - 우리나라로 로케일 변경하기 
+```
 Sys.setlocale(category = 'LC_ALL',locale='korean') 
 localeToCharset()
 ```
