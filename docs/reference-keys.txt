@@ -1,0 +1,15 @@
+updates
+r-setting
+window
+설치해야할-프로그램
+miniconda-설치
+miniconda-가상환경-생성
+r에서-python-사용하기
+git-연결-오류port-22
+rmarkdown---pdf-및-한글사용을-위한-설정
+visual-studio-code-테마-설정
+네이버---d2coding
+r-tips
+affinity-designer-for-svglite
+code-수정
+발생문제

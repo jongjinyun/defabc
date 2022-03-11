@@ -1,9 +1,11 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAME HERE"
+title: "Rrepo"
+author: "defabc"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
 
-# Down the rabbit-hole
+# Updates
+- Affinity Designer for SVGLITE (2021-08-25)
+- R setting(2022-03-11)
 
