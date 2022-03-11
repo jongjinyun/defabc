@@ -14,3 +14,49 @@ install.packages("bookdown")
 bookdown::render_book("index.Rmd")
 browseURL("docs/index.html")
 ```
+- bookdown에 대한 참고문헌
+    - 서울시립대학교 통계학과 이용희 [Bookdown 패키지를 사용한 한글책 제작의 기초](https://ilovedata.github.io/computing/bookdown/)
+    - Yihui Xie [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/)
+
+- 아래 패키지를 이용하였음
+```
+library(bookdown)
+library(knitr)
+library(tidyverse)
+library(showtext)
+```
+```{r, include=FALSE}
+lib <- c('tidyverse','showtext')
+lapply(lib, library, character.only = T)
+rm(lib)
+```
+
+- chunk에 대해 아래와 같이 설정하였음
+    - eval=F - 코드를 실행하지 않는다.
+    - echo=F - 코드를 보여주지 않는다.
+    - include=F - 실행 결과를 보여주지 않는다.
+    - message=F - 실행 때 나오는 메세지를 보여주지 않는다.
+    - warning=F - 실행 때 나오는 경고를 보여주지 않는다.
+    - error=T - 에러가 있어도 실행하고 에러코드를 보여준다.
+    - fig.height = 7 - 그림 높이, R로 그린 그림에만 해당한다.
+    - fig.width = 7 - 그림 너비, R로 그린 그림에만 해당한다.
+    - fig.align = 'center' - 그림 위치, R로 그린 그림에만 해당한다.
+```{r chunk setup}
+knitr::opts_chunk$set(warning = F,
+                      error = T,
+                      message = F)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
