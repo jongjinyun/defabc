@@ -47,12 +47,10 @@ Sys.setlocale(category = 'LC_ALL',locale='korean')
 localeToCharset()
 ```
 
-### miniconda 설치
+### miniconda 설치 및 가상환경 생성
 - [슬기로운통계생활 - 유투브](https://www.youtube.com/watch?v=DFN__fmPvmI&t=937s)
 - google: git and install miniconda 검색
 - 설치과정에 'Select the first option for “Add Anaconda to my PATH environment variable” and also leave the selection on “Register Anaconda as my default Python 3.7”. Click on “Install”.' 체크
-
-### miniconda 가상환경 생성
 - cmd: conda
 ```
 conda --version
@@ -164,3 +162,80 @@ rscodeio::install_theme()
 
 ### 네이버 - D2=Coding
 - [D2 coding 글꼴](https://github.com/naver/d2codingfont)
+
+
+### font 설정
+- extrafont의 여러 문제로 showtext pacakge로 변경
+- 참고자료
+    - [showtext: Using Fonts More Easily in R Graphs](https://cran.rstudio.com/web/packages/showtext/vignettes/introduction.html)
+    - [너의 폰트를 써라! (R에서도)](https://danbi-ncsoft.github.io/etc/2018/07/24/use-your-font-in-r.html)
+- TTF(일반문서에 적합) 뿐만 아니라 OTF(그래픽 디자인 출력에 적합)도 설치 가능
+- 단점: Rstudio 실행마다 폰트 설치를 실행해야함
+- KoPub 서체 설치
+- fonts 위치
+    - C:/Windows/fonts
+- **font_paths()**: 폰트가 설치된 경로
+- **font_files()**: 윈도우에 설치된 폰트의 path, file, family, face, version, ps_name에 대한 파일 데이터
+- **font_add**: 폰트 설치(family 내 bold, italic, bolditalic, symbol 설정 가능)
+```
+font_add(family = "Arial",
+         regular = "C:/Windows/Fonts/arial.ttf",
+         bold = "C:/Windows/Fonts/arialbd.ttf",
+         italic = "C:/Windows/Fonts/ariali.ttf",
+         bolditalic = "C:/Windows/Fonts/arialbi.ttf",
+         symbol = NULL)
+font_add(family = "KoPubDotumL",
+         regular = "C:/Windows/Fonts/KoPubWorld Dotum_Pro Light.otf")
+font_add(family = "KoPubDotumM",
+         regular = "C:/Windows/Fonts/KoPubWorld Dotum_Pro Medium.otf")
+font_add(family = "KoPubDotumB",
+         regular = "C:/Windows/Fonts/KoPubWorld Dotum_Pro Bold.otf")
+```
+- **showtext_auto()**:  turn on/off the automatic use of showtext functionality
+- **font_families()**: 설치된 폰트확인
+
+```{r, warning=FALSE}
+ggplot(NULL, aes(x = 1, y = 1)) + 
+ylim(0.8, 1.3) + 
+annotate("text", 1, 1.2, family = 'Arial', size = 15, fontface = 'italic',
+         label = 'Arial italic') +
+annotate("text", 1, 1.1,family = 'KoPubDotumL', size = 15,
+         label = "KoPubWorldDotum_Pro Light") + 
+annotate("text", 1, 1, family = 'KoPubWorldDotum_Pro Medium', size = 15,
+         label = "KoPub Dotum M") + 
+annotate("text", 1, 0.9, family = 'KoPubDotumB', size = 15,
+         label = "KoPubWorldDotum_Pro Bold") +
+theme_void()
+```
+
+### font에 대한 snippet 설정
+- [슬기로운 통계생활 - 유투브](https://www.youtube.com/watch?v=hgoiJQ2Rc1Q&list=PLKtLBdGREmMlsQvFyWWRsg7OX6S3kfuJk&index=14)
+- Options-code-Editing에서 Snippets 설정
+    - edit snippets
+- snippet 아래 코드는 항상 tab을 누르고 사용
+```
+snippet kfonts
+	library(showtext)
+	font_add(family = "KoPubDotumL",
+	         regular = "C:/Windows/Fonts/KoPubWorld Dotum_Pro Light.otf")
+	font_families()
+	showtext_auto()
+```
+- 코드창에서는 snippet이 잘 되지만 markdown에서는 잘 안됨
+
+### 사용하기 좋은 package
+- *datapasta*
+    - Excel에서 바로 붙여넣을 수 있음(tibble, vector,...)
+    - addins
+
+
+
+
+
+
+
+
+
+
+
+
