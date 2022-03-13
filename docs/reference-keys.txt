@@ -18,6 +18,7 @@ r-tips
 affinity-designer-for-svglite
 code-수정
 발생문제
+git
 data-preprocessing
 dbi-rsqlite
 db생성

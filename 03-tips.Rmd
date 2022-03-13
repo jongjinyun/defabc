@@ -90,3 +90,45 @@ tar.gz파일로 된 패키지가 R에서 수동으로 설치되지 않는 문제
 
 (mac) m1칩을 사용하는 경우
 (mac) homebrew 설치 및 libpng package 설치했음
+
+## Git
+- 다음 내용을 바탕으로 작성하였음
+    - [안경잡이개발자](https://ndb796.tistory.com/184?category=1029186)
+    - [슬기로운통계생활](https://youtu.be/KdpNijR0RPk)
+    - [git의 원리(git object를 중심으로)](https://sjh836.tistory.com/37)
+
+**git**(깃)은 '컴퓨터 파일의 변경사항을 추적하고 여러명의 사용자들 간에 해당파일들의 작업을 조율하기 위한 분산버전관리시스템 혹은 명령어'를 의미한다(위키피디아). git의 object를 중심으로 작동원리를 살펴보면 4개의 단계로 구성된다.
+
+- Working Directory: 작업할 파일이 있는 디렉토리
+- Staging Area: 커밋(commit)을 수행한 파일이 올라가는 영역
+- Local Repository / Remote Repository: 파일이나 폴더를 저장해두는 곳
+    - 원격: 원격 전용 서버에서 관리
+    - 로컬: 내 PC에서 관리
+- 단계별 파일의 이동
+  - git add: Working Directory → Staging Area
+      - Staging Area에 파일 이름을 추가(추적등록), object에 blob타입으로 파일 내용 추가
+      - 같은 파일이라도 파일내용이 달라지면 새로운 object가 생기며, object이름은 SHA1으로 hash
+  - git commit: Staging Area → Local Repository
+      - object에 commit과 tree객체 추가
+          - tree는 commit할때의 Staging Areafmf 스냅샷해 저장
+          - commit은 tree객체명과 Author, Date, Msg를 저장하며, 이전 commit객체명을 parent로 저장
+  - git push: Local Repository → Remote Repository
+  - git pull: Remote Repository → Working Directory
+
+<img src = "https://t1.daumcdn.net/cfile/tistory/9971A1405C1DDADF20">
+
+> git의 object  
+blob(파일내용) + tree(디렉토리와 blob 정보들을 담음) + commit(tree의 객체명과 Author, Date, Msg) + tag(태그명,태그만든사람,주석)
+
+
+
+
+
+
+
+
+
+
+
+
+

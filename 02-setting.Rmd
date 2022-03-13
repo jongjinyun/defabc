@@ -179,18 +179,23 @@ rscodeio::install_theme()
 - **font_add**: 폰트 설치(family 내 bold, italic, bolditalic, symbol 설정 가능)
 
 ```{r font 추가}
+fp <- font_paths()
+ff <- font_files() %>%
+  filter(str_detect(file, "KoPubWorld Dotum_Pro") |
+         family == "Arial") %>%
+  mutate(pf = str_c(path, file, sep = "/"))
 font_add(family = "Arial",
-         regular = "C:/Windows/Fonts/arial.ttf",
-         bold = "C:/Windows/Fonts/arialbd.ttf",
-         italic = "C:/Windows/Fonts/ariali.ttf",
-         bolditalic = "C:/Windows/Fonts/arialbi.ttf",
+         regular = filter(ff, face=="Regular"&family=="Arial")$pf,
+         bold = filter(ff, face=="Bold"&family=="Arial")$pf,
+         italic = filter(ff, face=="Italic"&family=="Arial")$pf,
+         bolditalic = filter(ff, face=="Bold Italic"&family=="Arial")$pf,
          symbol = NULL)
 font_add(family = "KoPubDotumL",
-         regular = "C:/Windows/Fonts/KoPubWorld Dotum_Pro Light.otf")
+         regular = filter(ff, family=="KoPubWorldDotum_Pro Light")$pf)
 font_add(family = "KoPubDotumM",
-         regular = "C:/Windows/Fonts/KoPubWorld Dotum_Pro Medium.otf")
+         regular = filter(ff, family=="KoPubWorldDotum_Pro Medium")$pf)
 font_add(family = "KoPubDotumB",
-         regular = "C:/Windows/Fonts/KoPubWorld Dotum_Pro Bold.otf")
+         regular = filter(ff, family=="KoPubWorldDotum_Pro Bold")$pf)
 ```
 
 - **showtext_auto()**:  turn on/off the automatic use of showtext functionality
@@ -198,7 +203,7 @@ font_add(family = "KoPubDotumB",
 
 ```{r font 적용}
 font_families()
-showtext.auto()
+showtext_auto()
 ```
 
 ```{r font example}
