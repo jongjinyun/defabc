@@ -120,7 +120,70 @@ tar.gz파일로 된 패키지가 R에서 수동으로 설치되지 않는 문제
 > git의 object  
 blob(파일내용) + tree(디렉토리와 blob 정보들을 담음) + commit(tree의 객체명과 Author, Date, Msg) + tag(태그명,태그만든사람,주석)
 
+## Package
+- **usethis()** 및 **roxygen2** 사용
+- 주요 코드를 순서대로 나열
+- create_package(): package를 만들기위한 Rproject를 현재 경로에 생성
+    - setwd()로 상위폴더를 먼저 설정해 줄것
+    - here::dr_here() 명령어를 사용해 경로설정 상태 확인
+- use_git(): git 사용
+- use_github(): github사용, 연결된 github에 remote repository를 만듦
+    - tokken 문제: gh_token_help()
+        - create_github_token()
+- library(usethis)
+- library(roxygen2)
 
+### Package setting
+- use_mit_license(): MIT 라이센스 적용
+- use_readme_rmd(): rmd형태의 readme파일 생성
+    - use_readme_md(): md 형태
+- use_package(): package에서 사용할 package 추가
+    - DESCRIPITON, NAMESPACE 등
+    - use_tibble()
+- DESCRIPITON 수정
+```
+Package: RKSIC2 #package 이름
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports: 
+    rlang,
+    tibble,
+    tidyr
+Depends: 
+    R (>= 2.10)
+LazyData: true
+```
+
+### data 만들기
+- use_data(): Create package data
+    - `internal = TRUE`로 설정시 sysdata에 데이터 저장 (함수에서 데이터 사용 가능)
+        - 데이터 여러개를 내장할 경우: `use_data(x,y,internal=TRUE)`
+    - data폴더에 rds파일 생성 (`internal=TRUE`: R폴더 내 sysdata.rds 생성)
+- use_r(): Create or edit R or test files
+    - R폴더 내 데이터의 이름과 동일한 script생성
+    - 데이터에 대한 설명내용이며, 자세한 내용은 hadley의 nycflight 데이터 참고
+    
+### 함수 만들기
+- R폴더 내 함수이름으로 만들어진 script 생성
+- script내 작성되는 여러 기능
+    - `#' @export`: For a function to be usable outside of your package
+    
+
+
+
+
+
+
+
+    
 
 
 

@@ -24,7 +24,7 @@
 <meta name="author" content="defabc" />
 
 
-<meta name="date" content="2022-03-13" />
+<meta name="date" content="2022-03-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -165,6 +165,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.2" data-path="r-tips.html"><a href="r-tips.html#발생문제"><i class="fa fa-check"></i><b>3.1.2</b> 발생문제</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="r-tips.html"><a href="r-tips.html#git"><i class="fa fa-check"></i><b>3.2</b> Git</a></li>
+<li class="chapter" data-level="3.3" data-path="r-tips.html"><a href="r-tips.html#package"><i class="fa fa-check"></i><b>3.3</b> Package</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="r-tips.html"><a href="r-tips.html#package-setting"><i class="fa fa-check"></i><b>3.3.1</b> Package setting</a></li>
+<li class="chapter" data-level="3.3.2" data-path="r-tips.html"><a href="r-tips.html#data-만들기"><i class="fa fa-check"></i><b>3.3.2</b> data 만들기</a></li>
+<li class="chapter" data-level="3.3.3" data-path="r-tips.html"><a href="r-tips.html#함수-만들기"><i class="fa fa-check"></i><b>3.3.3</b> 함수 만들기</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="data-preprocessing.html"><a href="data-preprocessing.html"><i class="fa fa-check"></i><b>4</b> data preprocessing</a>
 <ul>
@@ -319,7 +325,91 @@ tar.gz파일로 된 패키지가 R에서 수동으로 설치되지 않는 문제
 <p>git의 object<br />
 blob(파일내용) + tree(디렉토리와 blob 정보들을 담음) + commit(tree의 객체명과 Author, Date, Msg) + tag(태그명,태그만든사람,주석)</p>
 </blockquote>
+</div>
+<div id="package" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Package</h2>
+<ul>
+<li><strong>usethis()</strong> 및 <strong>roxygen2</strong> 사용</li>
+<li>주요 코드를 순서대로 나열</li>
+<li>create_package(): package를 만들기위한 Rproject를 현재 경로에 생성
+<ul>
+<li>setwd()로 상위폴더를 먼저 설정해 줄것</li>
+<li>here::dr_here() 명령어를 사용해 경로설정 상태 확인</li>
+</ul></li>
+<li>use_git(): git 사용</li>
+<li>use_github(): github사용, 연결된 github에 remote repository를 만듦
+<ul>
+<li>tokken 문제: gh_token_help()
+<ul>
+<li>create_github_token()</li>
+</ul></li>
+</ul></li>
+<li>library(usethis)</li>
+<li>library(roxygen2)</li>
+</ul>
+<div id="package-setting" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Package setting</h3>
+<ul>
+<li>use_mit_license(): MIT 라이센스 적용</li>
+<li>use_readme_rmd(): rmd형태의 readme파일 생성
+<ul>
+<li>use_readme_md(): md 형태</li>
+</ul></li>
+<li>use_package(): package에서 사용할 package 추가
+<ul>
+<li>DESCRIPITON, NAMESPACE 등</li>
+<li>use_tibble()</li>
+</ul></li>
+<li>DESCRIPITON 수정</li>
+</ul>
+<pre><code>Package: RKSIC2 #package 이름
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person(&quot;First&quot;, &quot;Last&quot;, , &quot;first.last@example.com&quot;, role = c(&quot;aut&quot;, &quot;cre&quot;),
+           comment = c(ORCID = &quot;YOUR-ORCID-ID&quot;))
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports: 
+    rlang,
+    tibble,
+    tidyr
+Depends: 
+    R (&gt;= 2.10)
+LazyData: true</code></pre>
+</div>
+<div id="data-만들기" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> data 만들기</h3>
+<ul>
+<li>use_data(): Create package data
+<ul>
+<li><code>internal = TRUE</code>로 설정시 sysdata에 데이터 저장 (함수에서 데이터 사용 가능)
+<ul>
+<li>데이터 여러개를 내장할 경우: <code>use_data(x,y,internal=TRUE)</code></li>
+</ul></li>
+<li>data폴더에 rds파일 생성 (<code>internal=TRUE</code>: R폴더 내 sysdata.rds 생성)</li>
+</ul></li>
+<li>use_r(): Create or edit R or test files
+<ul>
+<li>R폴더 내 데이터의 이름과 동일한 script생성</li>
+<li>데이터에 대한 설명내용이며, 자세한 내용은 hadley의 nycflight 데이터 참고</li>
+</ul></li>
+</ul>
+</div>
+<div id="함수-만들기" class="section level3" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> 함수 만들기</h3>
+<ul>
+<li>R폴더 내 함수이름으로 만들어진 script 생성</li>
+<li>script내 작성되는 여러 기능
+<ul>
+<li><code>#' @export</code>: For a function to be usable outside of your package</li>
+</ul></li>
+</ul>
 
+</div>
 </div>
 </div>
             </section>

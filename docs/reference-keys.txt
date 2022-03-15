@@ -19,6 +19,10 @@ affinity-designer-for-svglite
 code-수정
 발생문제
 git
+package
+package-setting
+data-만들기
+함수-만들기
 data-preprocessing
 dbi-rsqlite
 db생성
