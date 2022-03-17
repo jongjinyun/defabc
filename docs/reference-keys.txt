@@ -14,6 +14,7 @@ visual-studio-code-테마-설정
 font-설정
 font에-대한-snippet-설정
 사용하기-좋은-package
+한-컴퓨터에서-여러-git-아이디-사용하기
 r-tips
 affinity-designer-for-svglite
 code-수정

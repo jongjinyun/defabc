@@ -250,13 +250,62 @@ snippet libset
     - Excel에서 바로 붙여넣을 수 있음(tibble, vector,...)
     - addins
 
+### 한 컴퓨터에서 여러 git 아이디 사용하기
+- 참고자료
+    - [한 컴퓨터에서 여러 개의 깃허브 계정 사용하기](https://velog.io/@jay/multiplegithubaccounts)
+    - [깃(git) - 프로젝트/저장소마다 다른 계정 정보 사용하기](https://awesometic.tistory.com/128)
+    - [Git 컴퓨터에 github 계정 여러개 연동하기 : ssh-key 발급, 등록](https://computer-science-student.tistory.com/367)
+    - [알아두면 유용한 맥 터미널 명령어 모음](https://yozm.wishket.com/magazine/detail/746/)
+- 외부에 공개하고 싶은 github과 내부적으로 관리하고 싶은 github이 서로 다를 때 사용
+    - gitpage를 사용하려면 repo를 public으로 사용해야하기 때문에 보여주기 싫은 repo도 공개해야하기 때문
+- SSH-key 인증수단의 개념
+    - User별로 SSH를 만들고 remote repository에서 각각을 인식하도록 만듦
 
+<center>
+<img src = "https://media.vlpt.us/images/jay/post/504979e7-3027-4f1a-a6cd-ea09043497d3/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-02-29%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%202.47.58.png" width = "80%">
+</center>
 
+- ssh-key 생성
+    - terminal에서 `~/.ssh/`로 이동 후 다음과 같이 입력 (window의 경우 gitbash)
 
+```
+ssh-keygen -t rsa -C "jjyun@kakao.com" -f "private"
+ssh-keygen -t rsa -C "jjjyunn@gmail.com" -f "external"
+```
+    - 생성한 키 등록 (key 등록이 안될경우 `eval $(ssh-agent -s)` 명령어로 SSH 에이전트를 백그라운드에 실행)
+    
+```
+ssh-add private
+ssh-add external
+```
+- config 수정
+    - terminal에서 config를 생성 후 텍스트 편집기로 수정
+    - 혹은 실행 후 직접 수정 `vim config`
+- 등록된 키가 잘 되는지 확인
 
+```
+ssh -T github.com-private
+ssh -T github.com-external
+```
 
+- github ID에 ssh 등록
+    - `~/.ssh/` 에 있는 ssh public을 눌러 확인
+    - terminal에서는 경로로 이동 후 실행 `cat ~/filename`
+    
+- git clone & remote
+    - git clone: `git clone git@github.com-userA:github계정/reponame.git`
+    - git remote: `git remote set-url origin git@github.com-userA:github계정/reponame.git`
 
+- R project에서는 global option을 이용해 서로 다른 ssh설정이 불가
+    - project를 git으로 부터 불러올때 설정
 
+- git clone 후 .gitconfig에 local user.name 및 user.email 설정
+    - global과 충돌하는 것을 방지하기 위함임
+
+```
+git config --local user.name "jongjinyun"
+git config --local user.email "jjyun@kakao.com"
+```
 
 
 

@@ -24,7 +24,7 @@
 <meta name="author" content="defabc" />
 
 
-<meta name="date" content="2022-03-15" />
+<meta name="date" content="2022-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -155,6 +155,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.11" data-path="setting.html"><a href="setting.html#font-설정"><i class="fa fa-check"></i><b>2.1.11</b> font 설정</a></li>
 <li class="chapter" data-level="2.1.12" data-path="setting.html"><a href="setting.html#font에-대한-snippet-설정"><i class="fa fa-check"></i><b>2.1.12</b> font에 대한 snippet 설정</a></li>
 <li class="chapter" data-level="2.1.13" data-path="setting.html"><a href="setting.html#사용하기-좋은-package"><i class="fa fa-check"></i><b>2.1.13</b> 사용하기 좋은 package</a></li>
+<li class="chapter" data-level="2.1.14" data-path="setting.html"><a href="setting.html#한-컴퓨터에서-여러-git-아이디-사용하기"><i class="fa fa-check"></i><b>2.1.14</b> 한 컴퓨터에서 여러 git 아이디 사용하기</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="r-tips.html"><a href="r-tips.html"><i class="fa fa-check"></i><b>3</b> R tips</a>
@@ -451,8 +452,8 @@ rscodeio::install_theme()</code></pre></li>
 <li><strong>font_families()</strong>: 설치된 폰트확인</li>
 </ul>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="setting.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">font_families</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;sans&quot;         &quot;serif&quot;        &quot;mono&quot;         &quot;wqy-microhei&quot; &quot;Arial&quot;        &quot;KoPubDotumL&quot; 
-## [7] &quot;KoPubDotumM&quot;  &quot;KoPubDotumB&quot;</code></pre>
+<pre><code>## [1] &quot;sans&quot;         &quot;serif&quot;        &quot;mono&quot;         &quot;wqy-microhei&quot; &quot;Arial&quot;       
+## [6] &quot;KoPubDotumL&quot;  &quot;KoPubDotumM&quot;  &quot;KoPubDotumB&quot;</code></pre>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="setting.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">showtext_auto</span>()</span></code></pre></div>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="setting.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="cn">NULL</span>, <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
 <span id="cb24-2"><a href="setting.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ylim</span>(<span class="fl">0.8</span>, <span class="fl">1.3</span>) <span class="sc">+</span> </span>
@@ -506,6 +507,72 @@ rscodeio::install_theme()</code></pre></li>
 <li>addins</li>
 </ul></li>
 </ul>
+</div>
+<div id="한-컴퓨터에서-여러-git-아이디-사용하기" class="section level3" number="2.1.14">
+<h3><span class="header-section-number">2.1.14</span> 한 컴퓨터에서 여러 git 아이디 사용하기</h3>
+<ul>
+<li>참고자료
+<ul>
+<li><a href="https://velog.io/@jay/multiplegithubaccounts">한 컴퓨터에서 여러 개의 깃허브 계정 사용하기</a></li>
+<li><a href="https://awesometic.tistory.com/128">깃(git) - 프로젝트/저장소마다 다른 계정 정보 사용하기</a></li>
+<li><a href="https://computer-science-student.tistory.com/367">Git 컴퓨터에 github 계정 여러개 연동하기 : ssh-key 발급, 등록</a></li>
+<li><a href="https://yozm.wishket.com/magazine/detail/746/">알아두면 유용한 맥 터미널 명령어 모음</a></li>
+</ul></li>
+<li>외부에 공개하고 싶은 github과 내부적으로 관리하고 싶은 github이 서로 다를 때 사용
+<ul>
+<li>gitpage를 사용하려면 repo를 public으로 사용해야하기 때문에 보여주기 싫은 repo도 공개해야하기 때문</li>
+</ul></li>
+<li>SSH-key 인증수단의 개념
+<ul>
+<li>User별로 SSH를 만들고 remote repository에서 각각을 인식하도록 만듦</li>
+</ul></li>
+</ul>
+<center>
+<img src = "https://media.vlpt.us/images/jay/post/504979e7-3027-4f1a-a6cd-ea09043497d3/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-02-29%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%202.47.58.png" width = "80%">
+</center>
+<ul>
+<li>ssh-key 생성
+<ul>
+<li>terminal에서 <code>~/.ssh/</code>로 이동 후 다음과 같이 입력 (window의 경우 gitbash)</li>
+</ul></li>
+</ul>
+<pre><code>ssh-keygen -t rsa -C &quot;jjyun@kakao.com&quot; -f &quot;private&quot;
+ssh-keygen -t rsa -C &quot;jjjyunn@gmail.com&quot; -f &quot;external&quot;</code></pre>
+<pre><code>- 생성한 키 등록 (key 등록이 안될경우 `eval $(ssh-agent -s)` 명령어로 SSH 에이전트를 백그라운드에 실행)</code></pre>
+<pre><code>ssh-add private
+ssh-add external</code></pre>
+<ul>
+<li>config 수정
+<ul>
+<li>terminal에서 config를 생성 후 텍스트 편집기로 수정</li>
+<li>혹은 실행 후 직접 수정 <code>vim config</code></li>
+</ul></li>
+<li>등록된 키가 잘 되는지 확인</li>
+</ul>
+<pre><code>ssh -T github.com-private
+ssh -T github.com-external</code></pre>
+<ul>
+<li>github ID에 ssh 등록
+<ul>
+<li><code>~/.ssh/</code> 에 있는 ssh public을 눌러 확인</li>
+<li>terminal에서는 경로로 이동 후 실행 <code>cat ~/filename</code></li>
+</ul></li>
+<li>git clone &amp; remote
+<ul>
+<li>git clone: <code>git clone git@github.com-userA:github계정/reponame.git</code></li>
+<li>git remote: <code>git remote set-url origin git@github.com-userA:github계정/reponame.git</code></li>
+</ul></li>
+<li>R project에서는 global option을 이용해 서로 다른 ssh설정이 불가
+<ul>
+<li>project를 git으로 부터 불러올때 설정</li>
+</ul></li>
+<li>git clone 후 .gitconfig에 local user.name 및 user.email 설정
+<ul>
+<li>global과 충돌하는 것을 방지하기 위함임</li>
+</ul></li>
+</ul>
+<pre><code>git config --local user.name &quot;jongjinyun&quot;
+git config --local user.email &quot;jjyun@kakao.com&quot;</code></pre>
 
 </div>
 </div>
