@@ -24,6 +24,10 @@ package
 package-setting
 data-만들기
 함수-만들기
+showtext-rmarkdown
+출처
+problem
+해결방법
 data-preprocessing
 dbi-rsqlite
 db생성
