@@ -1,6 +1,6 @@
 defabc
 setting
-window
+rstudio-window
 설치해야할-프로그램
 rtools설치
 window-영어-설정
@@ -15,6 +15,9 @@ font-설정
 font에-대한-snippet-설정
 사용하기-좋은-package
 한-컴퓨터에서-여러-git-아이디-사용하기
+vscode
+vscode에서-r-사용하기
+zsh
 r-tips
 affinity-designer-for-svglite
 code-수정
