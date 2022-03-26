@@ -28,7 +28,7 @@ library(tidyverse)
 library(showtext)
 ```
 ```{r, include=FALSE}
-lib <- c('tidyverse','showtext')
+lib <- c('tidyverse','showtext', 'knitr', 'rmarkdown')
 lapply(lib, library, character.only = T)
 rm(lib)
 ```

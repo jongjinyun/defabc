@@ -361,3 +361,13 @@ vi ~/.zshrc
 # DEFAULT_USER
 PS1="%1~ %# "
 ```
+
+## choco and ntop
+- homebrew에 있는 htop와 유사한 패키지. 윈도우에서 사용 가능하다.
+- choco [설치방법](https://evandde.github.io/chocolatey/)
+        - PowerShell.exe를 관리자 권한으로 실행
+        - `Get-ExecutionPolicy` 명령어로 실행 정책을 확인합니다. 만약 Restricted가 출력된다면, `Set-ExecutionPolicy AllSigned` 나, `Set-ExecutionPolicy Bypass -Scope Process`를 입력하여 제한을 풀어줍니다.
+                - 실행 정책에 관해서는 간단하게 Bypass 옵션을 사용하셔도 되고, 좀 더 보안을 신경쓰신다면 AllSigned 옵션을 사용
+        - [chocolatey 공식 홈페이지](https://docs.chocolatey.org/en-us/choco/setup)에서 설치 링크를 복사 후 입력
+- ntop [설치방법](https://chocolatey.org/packages/NTop.Portable)
+        - `choco install ntop.portable
