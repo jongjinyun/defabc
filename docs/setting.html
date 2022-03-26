@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>repo 2 setting | Rrepo</title>
-  <meta name="description" content="repo 2 setting | Rrepo" />
+  <title>repo 2 setting | abc</title>
+  <meta name="description" content="repo 2 setting | abc" />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="repo 2 setting | Rrepo" />
+  <meta property="og:title" content="repo 2 setting | abc" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="repo 2 setting | Rrepo" />
+  <meta name="twitter:title" content="repo 2 setting | abc" />
   
   
   
@@ -23,7 +23,7 @@
 <meta name="author" content="defabc" />
 
 
-<meta name="date" content="2022-03-24" />
+<meta name="date" content="2022-03-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -161,6 +161,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.1" data-path="setting.html"><a href="setting.html#vscode에서-r-사용하기"><i class="fa fa-check"></i><b>2.2.1</b> VScode에서 R 사용하기<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="setting.html"><a href="setting.html#zsh"><i class="fa fa-check"></i><b>2.3</b> zsh<span></span></a></li>
+<li class="chapter" data-level="2.4" data-path="setting.html"><a href="setting.html#choco-and-ntop"><i class="fa fa-check"></i><b>2.4</b> choco and ntop<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="r-tips.html"><a href="r-tips.html"><i class="fa fa-check"></i><b>3</b> R tips<span></span></a>
 <ul>
@@ -188,7 +189,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dbi-rsqlite"><i class="fa fa-check"></i><b>4.1</b> DBI &amp; RSQLite<span></span></a>
 <ul>
 <li class="chapter" data-level="4.1.1" data-path="data-preprocessing.html"><a href="data-preprocessing.html#db생성"><i class="fa fa-check"></i><b>4.1.1</b> DB생성<span></span></a></li>
-<li class="chapter" data-level="4.1.2" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dbplyr"><i class="fa fa-check"></i><b>4.1.2</b> dbplyr<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="data-preprocessing.html"><a href="data-preprocessing.html#sqlite"><i class="fa fa-check"></i><b>4.2</b> SQLite<span></span></a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="data-preprocessing.html"><a href="data-preprocessing.html#sql-개념"><i class="fa fa-check"></i><b>4.2.1</b> SQL 개념<span></span></a></li>
+<li class="chapter" data-level="4.2.2" data-path="data-preprocessing.html"><a href="data-preprocessing.html#db-생성"><i class="fa fa-check"></i><b>4.2.2</b> DB 생성<span></span></a></li>
+<li class="chapter" data-level="4.2.3" data-path="data-preprocessing.html"><a href="data-preprocessing.html#테이블-다루기"><i class="fa fa-check"></i><b>4.2.3</b> 테이블 다루기<span></span></a></li>
+<li class="chapter" data-level="4.2.4" data-path="data-preprocessing.html"><a href="data-preprocessing.html#외부-데이터-입력하기"><i class="fa fa-check"></i><b>4.2.4</b> 외부 데이터 입력하기<span></span></a></li>
+<li class="chapter" data-level="4.2.5" data-path="data-preprocessing.html"><a href="data-preprocessing.html#외부-데이터-출력하기"><i class="fa fa-check"></i><b>4.2.5</b> 외부 데이터 출력하기<span></span></a></li>
+<li class="chapter" data-level="4.2.6" data-path="data-preprocessing.html"><a href="data-preprocessing.html#테이블-가공"><i class="fa fa-check"></i><b>4.2.6</b> 테이블 가공<span></span></a></li>
+<li class="chapter" data-level="4.2.7" data-path="data-preprocessing.html"><a href="data-preprocessing.html#조건절"><i class="fa fa-check"></i><b>4.2.7</b> 조건절<span></span></a></li>
+<li class="chapter" data-level="4.2.8" data-path="data-preprocessing.html"><a href="data-preprocessing.html#관계설정"><i class="fa fa-check"></i><b>4.2.8</b> 관계설정<span></span></a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -202,7 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Rrepo</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">abc</a>
           </h1>
         </div>
 
@@ -660,6 +671,19 @@ withr::with_makevars(c(OBJCXX = &quot;gcc&quot;), install.packages(&#39;systemfo
 <pre><code>vi ~/.zshrc
 # DEFAULT_USER
 PS1=&quot;%1~ %# &quot;</code></pre>
+</div>
+<div id="choco-and-ntop" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> choco and ntop<a href="setting.html#choco-and-ntop" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>homebrew에 있는 htop와 유사한 패키지. 윈도우에서 사용 가능하다.</li>
+<li>choco <a href="https://evandde.github.io/chocolatey/">설치방법</a>
+- PowerShell.exe를 관리자 권한으로 실행
+- <code>Get-ExecutionPolicy</code> 명령어로 실행 정책을 확인합니다. 만약 Restricted가 출력된다면, <code>Set-ExecutionPolicy AllSigned</code> 나, <code>Set-ExecutionPolicy Bypass -Scope Process</code>를 입력하여 제한을 풀어줍니다.
+- 실행 정책에 관해서는 간단하게 Bypass 옵션을 사용하셔도 되고, 좀 더 보안을 신경쓰신다면 AllSigned 옵션을 사용
+- <a href="https://docs.chocolatey.org/en-us/choco/setup">chocolatey 공식 홈페이지</a>에서 설치 링크를 복사 후 입력</li>
+<li>ntop <a href="https://chocolatey.org/packages/NTop.Portable">설치방법</a>
+- `choco install ntop.portable</li>
+</ul>
 
 </div>
 </div>

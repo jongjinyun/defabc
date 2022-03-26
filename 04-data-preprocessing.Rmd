@@ -48,7 +48,7 @@ dbSendQuery(con,
 - SQL문법의 세가지 종류
 
 DDL(데이터 정의 언어)| DML(데이터 조작 언어)|DCL(데이터 제어 언어)
--------------------------------------------------------------------
+--------|--------|-------------------------|--------------------------
 CREATE | INSERT |GRANT
 DROP | UPDATE | REVOKE
 ALTER | DELETE | COMMIT
@@ -92,7 +92,7 @@ CREATE dbname table (
 
 - 테이블 제거
 ```
-DROP dbname table;
+DROP TABLE table;
 ```
 
 - 컬럼 관련 주요 명령어
