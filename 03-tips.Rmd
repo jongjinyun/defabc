@@ -1,4 +1,12 @@
 # R tips
+## Base R
+- `.libPaths()`: 패키지가 설치되 경로를 불러온다.
+- `file.edit('~/.Rprofile')`: R이 실행될때 자동으로 입력될 코드에 대한 파일을 수정한다.
+- `R.Home()`: R이 설치된 경로를 불러온다.
+    - `R.Home(R)`: R의 실행파일이 설치되 경로를 불러온다.
+- `list2env()`: 리스트에 포함된 모든 구성요소를 지정된 환경의 오브젝트로 저장한다.
+    - `list2env(x, envir = .GlobalEnv)`리스트의 구성요소를 Globalenv에 저장하기
+
 ## Affinity Designer for SVGLITE
 Affiinity Designer 사용을 위한 svglite package의 code 수정방법에 대해 알아본다.
 

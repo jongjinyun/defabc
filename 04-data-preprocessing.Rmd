@@ -1,18 +1,15 @@
----
-title: "abc"
-output: html_document
----
-
 # data preprocessing
+
 ## DBI & RSQLite
 RAM보다 큰 대용량데이터를 다루기 위해 DBI와 RSQLite 패키지를 사용한다. RSQLite는 R에서 SQLite DB를 사용할 수 있도록 하며, SQLite는 데이터베이스 전체를 파일 하나에 저장하기 때문에 백업과 이동이 간편하다. 참고한 웹페이지는 다음과 같다.
 - [R에서 DB사용(Sqlite)](https://unfinishedgod.netlify.app/2020/07/24/r%EC%97%90%EC%84%9C-db-%EC%82%AC%EC%9A%A9sqlite/)
 
-단, 전체 DB를 가지고 데이터 전처리를 진행하지 않는걸 추천한다. 일부 sample을 가지고 데이터 전처리를 수행한 후, 한 파일로 합치는 용도로 쓴다. 이때, DB에 대한 데이터 집계처리는 필요한 테이블을 추출하는 용도로만 사용한다. 예를 들어, case_when 등 function은 dbplyr로 잘 처리가 되지 않으며 오래걸린다. 특히, 메모리 문제로 오류가 발생할 가능성이 있다.
+단, 전체 DB를 가지고 데이터 전처리를 진행하지 않는걸 추천한다. 일부 sample을 가지고 데이터 전처리를 수행한 후, 한 파일로 합치는 용도로 쓴다. 이때, DB에 대한 데이터 집계처리는 필요한 테이블을 추출하는 용도로만 사용한다. 예를 들어, case_when 등 function은 dbplyr로 잘 처리가 되지 않으며 오래걸린다. 특히, 메모리 문제로 오류가 발생할 가능성이 있다. 파일명과 경로는 한글이 아닌 영어를 되도록 사용하자!
 
 ### DB생성
 - DB의 생성은 다음과 같이 진행한다.
     - **dbConnect()**함수를 활용해 연결한다. SQLite()는 드라이버의 이름을 의미한다.
+
 ```
 dbConnect(SQLite(), dbname = 'dbname')
 ```
@@ -28,6 +25,7 @@ dbSendQuery(con,
 ```
     - **dbListTables(con)**로 테이블리스트를 확인한다.
     - **dbGetQuery(con, "SELECT * FROM E_db")**
+
 - DB에 데이터를 다음과 같이 저장한다.
     - **dbWriteTable(con, name = "E_db", value = db_3, row.names = F, append = T)**
         - value는 저장할 데이터를 의미한다.
@@ -35,13 +33,14 @@ dbSendQuery(con,
         - **dbDisconnect(con)**시 자동으로 저장된다.
         
 ## SQLite
+
 - vscode로 넘어가며 sqlite를 직접 사용한다. 참고 자료는 다음과 같다.
-        - [SQL문법](https://ssabum.github.io/p/sql%EB%AC%B8%EB%B2%95/) 주로 이 자료 활용
-        - [프로그램 개발 지식 공유](https://araikuma.tistory.com/category/SQLite)
-        - [SQLite-DB생성과 변경](https://inuplace.tistory.com/421?category=911622)
-        - [HeyTech-SQLite](https://heytech.tistory.com/category/Big%20Data/SQLite)
-        - [Command Line Shell For SQLite](https://www.sqlite.org/cli.html) 공식문서
-        - [디비랑](https://dbrang.tistory.com/)
+    - [SQL문법](https://ssabum.github.io/p/sql%EB%AC%B8%EB%B2%95/) 주로 이 자료 활용
+    - [프로그램 개발 지식 공유](https://araikuma.tistory.com/category/SQLite)
+    - [SQLite-DB생성과 변경](https://inuplace.tistory.com/421?category=911622)
+    - [HeyTech-SQLite](https://heytech.tistory.com/category/Big%20Data/SQLite)
+    - [Command Line Shell For SQLite](https://www.sqlite.org/cli.html) 공식문서
+    - [디비랑](https://dbrang.tistory.com/)
 
 ### SQL 개념
 - SQL(Structured Query Language)는 관계형 데이터베이스 관리시스템(RDMBS)의 데이터를 관리하기 위해 설계된 특수 목적의 프로그래밍 언어
@@ -127,7 +126,7 @@ WHERE condition;
 ```
 
 - 수정(UPDATE)
-        - 
+
 ```
 UPDATE table
 SET column1=value1, column2=value2, ...
@@ -243,6 +242,11 @@ FROM TEST;
 FOREIGN KEY(대상 테이블의 FOREIGN KEY가 되어줄 COL) REFERENCES 대상 테이블(FOREIGN KEY가 되어줄 COL)
 ```
 
+### 자주사용하는 Operators
+- [Operators, and Parse-Affecting Attributes](https://www.sqlite.org/lang_expr.html)
+- Equals can be either = or ==.
+- The non-equals operator can be either != or <>. 
+- The || operator is "concatenate" - it joins together the two strings of its operands.
 
-
-
+### 자주 사용하는 명령어
+- `VACUMM`: DB의 용량 정리
